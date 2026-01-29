@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ email.subject }}
+{% endblock title %}
+
+{% block content %}
+    <h3>{{ email.subject }}</h3>
+
+    <p class="text-muted">
+        <strong>From:</strong> {{ email.sender }} &lt;{{ email.email }}&gt;<br>
+        <strong>Time:</strong> {{ email.time }}
+    </p>
+
+    <hr>
+
+    <p>{{ email.body }}</p>
+
+    <div class="mt-4">
+        <a href="/login/{{email.id}}" class="btn btn-danger btn-sm mx-1">Click here</a>
+        <a href="/" class="btn btn-secondary btn-sm mx-1">Back to Inbox</a>
+    </div>
+{% endblock content %}
