@@ -1,18 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Report Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
 <body>
-    This was a phishing simulator. You have been doxxed.
-    <td>
-        <a href="/" type="button" class="btn btn-outline-dark btn-sm mx-1">Back</button>
-    </td>
+    <h1>This was an phishing simulator.</h1>
+    <p>In a real phishing attack, the email address and password entered on this page could be captured and misused by an attacker.</p>
 
+    <p>This email address was entered during the simulation: <strong>{{ entered_email }}</strong></p>
+    <p>You opened a phishing email, clicked on it and then entered credentials which were complete red flags.</p>
+
+    <hr class="border border opacity-50">
+
+    <p>Each email contained the following flags: Urgency or Authority.</p>
+    <p>Example: We detected a login attempt from a new device. Please verify <strong>"immediately"</strong>.</p>
+    <p>Here, immediately creates a sense of Urgency thus resulting you in entering your credentials without any thought.</p>
+
+    <hr class="border border opacity-50">
+
+    <p>To stay safe: <strong>Always check sender domains before clicking links & Never enter credentials from email links</strong></p>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+        </script>
 </body>
 
 </html>
