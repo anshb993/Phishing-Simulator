@@ -1,32 +1,53 @@
 {% extends "base.html" %}
+
 {% block title %}
 Inbox
 {% endblock title %}
+
 {% block content %}
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Time</th>
+<div class="row justify-content-center">
+    <div class="col-lg-10">
 
-        </tr>
-    </thead>
-    <tbody>
-        {% for email in emails %}
-        <tr class="clickable-row" data-href="/email/{{ email.id }}" style="cursor: pointer;">
-            <th scope="row">{{ email.id }}</th>
-            <td>{{ email.sender }}</td>
-            <td>{{ email.email }}</td>
-            <td>
-                <div class="col-10 text-truncate">{{ email.subject }}</div>
-            </td>
-            <td>{{ email.time }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
 
+                <h4 class="card-title mb-4">Inbox</h4>
+                <p class="text-muted mb-3">
+                    Click on any email to view details. Phishing emails are part of a controlled simulation.
+                </p>
+
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Subject</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for email in emails %}
+                            <tr class="clickable-row" data-href="/email/{{ email.id }}" style="cursor: pointer;">
+                                <th scope="row">{{ email.id }}</th>
+                                <td>{{ email.sender }}</td>
+                                <td>{{ email.email }}</td>
+                                <td>
+                                    <div class="text-truncate" style="max-width: 250px;">
+                                        {{ email.subject }}
+                                    </div>
+                                </td>
+                                <td>{{ email.time }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
 {% endblock content %}

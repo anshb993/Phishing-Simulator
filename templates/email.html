@@ -5,20 +5,32 @@
 {% endblock title %}
 
 {% block content %}
-    <h3>{{ email.subject }}</h3>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
 
-    <p class="text-muted">
-        <strong>From:</strong> {{ email.sender }} &lt;{{ email.email }}&gt;<br>
-        <strong>Time:</strong> {{ email.time }}
-    </p>
+                <h4 class="card-title mb-3">{{ email.subject }}</h4>
 
-    <hr>
+                <p class="text-muted mb-3">
+                    <strong>From:</strong> {{ email.sender }} &lt;{{ email.email }}&gt;<br>
+                    <strong>Time:</strong> {{ email.time }}
+                </p>
 
-    <p>{{ email.body }}</p>
+                <hr>
 
-    <div class="mt-4">
-        <a href="/login/{{email.id}}" class="btn btn-danger btn-sm mx-1">Click here</a>
-        <a href="/" class="btn btn-secondary btn-sm mx-1">Back to Inbox</a>
+                <p>{{ email.body }}</p>
+
+                <div class="mt-4 d-flex flex-wrap">
+                    <a href="/login/{{ email.id }}" class="btn btn-danger btn-sm me-2 mb-2">
+                        Click here
+                    </a>
+                    <a href="/" class="btn btn-secondary btn-sm mb-2">
+                        Back to Inbox
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-    
+</div>
 {% endblock content %}
