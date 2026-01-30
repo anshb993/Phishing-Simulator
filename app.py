@@ -1,8 +1,15 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 from datetime import datetime
 from email_templates import EMAILS #imports the file
+from risk_engine import calculations
 
 app = Flask(__name__)
+app.secret_key = "dev-secret-key"
+
+def init_session():
+    if "behaviour" not in session:
+        session["behaviour"] = []
+
 LOGS = []
 @app.route('/')
 def main():
@@ -10,15 +17,27 @@ def main():
 
 @app.route('/email/<int:email_id>')
 def viewEmail(email_id):
+    init_session()
     email = next((e for e in EMAILS if e["id"] == email_id), None)
+    session["behaviour"].append("Email")
+    risk = calculations(session["behaviour"], LOGS)
+    print("current risk: ",risk)
     return render_template('email.html', email=email)
 
 @app.route('/notice')
 def message():
-    return render_template('notice.html')
+    init_session()
+    session["behaviour"].append("Phished")
+    risk = calculations(session["behaviour"], LOGS)
+    print("current risk: ", risk)
+    return render_template('notice.html', risk=risk)
 
 @app.route("/login/<int:email_id>")
 def login(email_id):
+    init_session()
+    session["behaviour"].append("Clicked")
+    risk = calculations(session["behaviour"], LOGS)
+    print("current risk: ", risk)
     return render_template("login.html", email_id=email_id)
 
 @app.route('/submit', methods=['GET', 'POST'])
