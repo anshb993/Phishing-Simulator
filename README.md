@@ -55,9 +55,12 @@ This mirrors how enterprise phishing training platforms provide feedback rather 
    git clone <your-repo-url>
    cd <project-folder>
 2. **Create a virtual Environment**
+   ```bash
    python -m venv venv
    venv\Scripts\activate
-3. **Install Flask**
+4. **Install Flask**
+   ```bash
    pip install flask
-4. **Run the program**
+6. **Run the program**
+   ```bash
    python app.py
